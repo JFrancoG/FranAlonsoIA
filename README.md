@@ -1,5 +1,102 @@
 # 💇‍♂️ FranAlonsoIA
 
+**Professional management app for hair salons**, designed for Fran Alonso and his team. Built for daily use on iPad by hairdressers and on iPhone for business management tasks. Focused on speed, simplicity and powerful features – everything Fran needs at his fingertips.
+
+## 🎯 Vision
+
+A modern, fluid and robust app that enables complete management of a salon like Fran Alonso’s: services, products, stock, clients and sales – all tightly integrated, accessible and easy to use. Built with a forward-thinking architecture ready to integrate AI capabilities in the future.
+
+---
+
+## 🧑‍💼 Main Use Cases
+
+- 📌 Provide services to overlapping clients during the workday
+- 👩‍🦰 Client file with personal data, consent signature, hair color history or recurring details
+- 🧴 Product management for internal use during services or direct sales to clients
+- 📦 Real-time stock control linked to product usage and sales
+- 💳 Sales registration with option to print invoice or receipt
+- 📈 Monthly income/expenses overview, with occasional access to older data
+- 🧾 Appointment management is done with another app for now, but integration is planned
+
+---
+
+## 📱 Target Devices
+
+- **iPad (main usage):** for hairdressers during services
+- **iPhone (admin usage):** for inventory, pricing, reports, etc.
+- All devices are under 2 years old
+
+---
+
+## 🧩 MVP Features (v1.0)
+
+- Full client CRUD with consent form and custom fields
+- Product management (usage and sales)
+- Stock tracking and adjustments
+- Services registration
+- Sales with receipt/invoice
+- Monthly overview of business metrics
+
+---
+
+## 🔗 Core Entities (tightly connected)
+
+- `Client`
+- `Product`
+- `Service`
+- `StockMovement`
+- `Sale`
+- `ConsentForm`
+- *(Future: `Appointment`)*
+
+---
+
+## 🛠️ Architecture and Tech Stack
+
+- **iPad-first UI design**, with Split View, multitouch, and smooth navigation
+- **Swift 6** with strict concurrency (`@MainActor`, `async/await`, value types)
+- **SwiftUI (iOS 18+)**, adaptive UI
+- **Clean Architecture**: clear separation of `UI / Domain / Data`
+- **Local persistence**: SwiftData or CoreData (depending on stability)
+- **Cloud sync**: Firestore (Firebase) via decoupled repositories
+- **Minimal and intuitive UI**, inspired by Craft, Notion and Things
+- **Dark mode and accessibility** from day one
+
+---
+
+## 🧠 Built for Future AI
+
+- Architecture designed to support smart suggestions, OCR, sales analysis, etc.
+- Modular foundation to integrate custom ML models or external APIs
+
+---
+
+## 🔧 Development and Collaboration
+
+- 📁 Modular structure (`UI`, `Domain`, `Data`, `Core`, `Resources`, etc.)
+- 🧪 CI/CD and test-ready from the start
+- 📋 GitHub Issues and Projects for task tracking
+- ✅ Clean code and pull request practices
+- 🖼️ Design references in Figma/Miro
+- 🧾 Living README and technical documentation
+
+---
+
+## 📌 Notes
+
+- Appointments are managed in a separate app for now, but this app is prepared to integrate them later.
+- Built as a professional, scalable, and maintainable long-term solution.
+
+---
+
+**FranAlonsoIA** is more than a hair salon app — it’s the definitive digital tool for professionals who want to focus on their clients without losing business control.
+
+---
+
+## 🇪🇸 Versión en Español
+
+# 💇‍♂️ FranAlonsoIA
+
 App de gestión profesional para peluquerías, diseñada para Fran Alonso y su equipo. Pensada para el uso diario en iPad por los peluqueros, y en iPhone para tareas administrativas. La app está centrada en la eficiencia, la simplicidad y la potencia, permitiendo a Fran tener todo lo que necesita al alcance de un toque.
 
 ## 🎯 Visión
