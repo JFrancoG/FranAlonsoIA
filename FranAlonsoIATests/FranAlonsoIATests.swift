@@ -5,12 +5,13 @@
 //  Created by Jesús Franco on 05.07.2025.
 //
 
-import Testing
+import XCTest
 
-struct FranAlonsoIATests {
+final class FranAlonsoIATests: XCTestCase {
 
-    @Test func example() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+    func testExample() throws {
+        // TODO: Add real tests once business logic is implemented.
+        XCTAssertTrue(true)
     }
 
 }
