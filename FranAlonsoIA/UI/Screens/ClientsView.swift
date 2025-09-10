@@ -32,5 +32,5 @@ struct ClientsView: View {
 }
 
 #Preview {
-    ClientsView()
+    ClientsView(viewModel: .preview)
 }
