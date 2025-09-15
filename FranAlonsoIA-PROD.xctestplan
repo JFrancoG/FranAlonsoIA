@@ -1,0 +1,43 @@
+{
+  "configurations" : [
+    {
+      "id" : "9D953EE1-05E0-4690-956D-CF59587005DA",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "environmentVariableEntries" : [
+      {
+        "key" : "IS_RUNNING_TESTS",
+        "value" : "YES"
+      }
+    ],
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:FranAlonsoIA.xcodeproj",
+      "identifier" : "E090AF4D2E189514008AC21A",
+      "name" : "FranAlonsoIA"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:FranAlonsoIA.xcodeproj",
+        "identifier" : "E090AF5B2E189515008AC21A",
+        "name" : "FranAlonsoIATests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:FranAlonsoIA.xcodeproj",
+        "identifier" : "E090AF652E189515008AC21A",
+        "name" : "FranAlonsoIAUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

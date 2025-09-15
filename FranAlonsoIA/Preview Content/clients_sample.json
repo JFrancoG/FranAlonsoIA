@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "fullName": "Fran Alonso",
+    "phones": ["666123123"],
+    "email": "fran@example.com",
+    "gender": "male",
+    "billingAddress": null,
+    "birthDate": null,
+    "colorRecipe": "Rubio dorado",
+    "lastColorDate": null,
+    "profilePhotoUrl": null,
+    "consentFormUrl": null,
+    "notes": "Cliente habitual",
+    "isActive": true
+  },
+  {
+    "id": "2",
+    "fullName": "Lucía Gómez",
+    "phones": ["666888999", "666777666"],
+    "email": null,
+    "gender": "female",
+    "billingAddress": null,
+    "birthDate": null,
+    "colorRecipe": null,
+    "lastColorDate": null,
+    "profilePhotoUrl": null,
+    "consentFormUrl": null,
+    "notes": null,
+    "isActive": true
+  }
+]
