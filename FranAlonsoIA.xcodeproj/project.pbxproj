@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E08116382E7828C700D17780 /* FranAlonsoIA-DEV.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = E05C5F132E74F4BF00CE0867 /* FranAlonsoIA-DEV.xctestplan */; };
+		E08116392E7828C700D17780 /* FranAlonsoIA-DEV.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = E05C5F132E74F4BF00CE0867 /* FranAlonsoIA-DEV.xctestplan */; };
 		E08E819E2E736DF000FC8974 /* FirebaseAnalyticsCore in Frameworks */ = {isa = PBXBuildFile; productRef = E08E819D2E736DF000FC8974 /* FirebaseAnalyticsCore */; };
 		E08E81A02E736DF000FC8974 /* FirebaseAnalyticsIdentitySupport in Frameworks */ = {isa = PBXBuildFile; productRef = E08E819F2E736DF000FC8974 /* FirebaseAnalyticsIdentitySupport */; };
 		E08E81A22E736DF000FC8974 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E08E81A12E736DF000FC8974 /* FirebaseAuth */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E05C5F132E74F4BF00CE0867 /* FranAlonsoIA-DEV.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "FranAlonsoIA-DEV.xctestplan"; sourceTree = "<group>"; };
+		E05C5F142E74F54200CE0867 /* FranAlonsoIA-PROD.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "FranAlonsoIA-PROD.xctestplan"; sourceTree = "<group>"; };
 		E090AF4E2E189514008AC21A /* FranAlonsoIA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FranAlonsoIA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E090AF5C2E189515008AC21A /* FranAlonsoIATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FranAlonsoIATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E090AF662E189515008AC21A /* FranAlonsoIAUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FranAlonsoIAUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +53,7 @@
 				Domain/Model/Client.swift,
 				Domain/Repository/ClientRepository.swift,
 				Domain/UseCase/GetClientsUseCase.swift,
+				UI/ViewModel/ClientsViewModel.swift,
 			);
 			target = E090AF5B2E189515008AC21A /* FranAlonsoIATests */;
 		};
@@ -112,9 +117,12 @@
 		E090AF452E189514008AC21A = {
 			isa = PBXGroup;
 			children = (
+				E05C5F142E74F54200CE0867 /* FranAlonsoIA-PROD.xctestplan */,
+				E05C5F132E74F4BF00CE0867 /* FranAlonsoIA-DEV.xctestplan */,
 				E090AF502E189514008AC21A /* FranAlonsoIA */,
 				E090AF5F2E189515008AC21A /* FranAlonsoIATests */,
 				E090AF692E189515008AC21A /* FranAlonsoIAUITests */,
+				E0F259162E7884200094D14C /* Frameworks */,
 				E090AF4F2E189514008AC21A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -127,6 +135,13 @@
 				E090AF662E189515008AC21A /* FranAlonsoIAUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E0F259162E7884200094D14C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +282,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E08116382E7828C700D17780 /* FranAlonsoIA-DEV.xctestplan in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +290,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E08116392E7828C700D17780 /* FranAlonsoIA-DEV.xctestplan in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
