@@ -12,7 +12,7 @@ enum FSEnvironment: String {
     case production
 
     static var current: FSEnvironment {
-        #if DEBUG
+        #if DEVELOP
         return .develop
         #else
         return .production

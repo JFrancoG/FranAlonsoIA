@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ClientsView: View {
-    @StateObject private var viewModel = ClientsViewModel()
+    @StateObject var viewModel: ClientsViewModel
 
     var body: some View {
         NavigationStack {
@@ -24,8 +24,8 @@ struct ClientsView: View {
                 }
             }
             .navigationTitle("Clients")
-            .onAppear {
-                viewModel.fetchClients()
+            .task {
+                await viewModel.fetchClients()
             }
         }
     }
@@ -34,3 +34,4 @@ struct ClientsView: View {
 #Preview {
     ClientsView(viewModel: .preview)
 }
+

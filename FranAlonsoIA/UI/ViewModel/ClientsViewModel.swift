@@ -14,58 +14,27 @@ final class ClientsViewModel: ObservableObject {
 
     private let getClientsUseCase: GetClientsUseCase
 
-    init() {
-        let repository = FakeClientRepository()
-        self.getClientsUseCase = GetClientsUseCase(repository: repository)
+    init(getClientsUseCase: GetClientsUseCase) {
+        self.getClientsUseCase = getClientsUseCase
     }
 
-    func fetchClients() {
-        Task {
-            do {
-                let result = try await getClientsUseCase.execute()
-                self.clients = result
-            } catch {
-                print("Error fetching clients: \(error)")
-            }
+    func fetchClients() async {
+        do {
+            let result = try await getClientsUseCase.execute()
+            self.clients = result
+        } catch {
+            print("Error fetching clients: \(error)")
         }
     }
 }
 
 extension ClientsViewModel {
     static var preview: ClientsViewModel {
-        let vm = ClientsViewModel()
-        vm.clients = [
-            Client(
-                id: "1",
-                fullName: "Fran Alonso",
-                phones: ["666123123"],
-                email: "fran@example.com",
-                gender: "male",
-                billingAddress: nil,
-                birthDate: nil,
-                colorRecipe: "Rubio dorado",
-                lastColorDate: nil,
-                profilePhotoUrl: nil,
-                consentFormUrl: nil,
-                notes: "Cliente habitual",
-                isActive: true
-            ),
-            Client(
-                id: "2",
-                fullName: "Lucía Gómez",
-                phones: ["666888999", "666777666"],
-                email: nil,
-                gender: "female",
-                billingAddress: nil,
-                birthDate: nil,
-                colorRecipe: nil,
-                lastColorDate: nil,
-                profilePhotoUrl: nil,
-                consentFormUrl: nil,
-                notes: nil,
-                isActive: true
-            )
+        let previewClients: [Client] = [
+            .fake(id: "1", name: "Ana Cliente", phones: ["123456789"]),
+            .fake(id: "2", name: "Luis Cliente", phones: ["987654321"])
         ]
-        return vm
+        let useCase = GetClientsUseCase(repository: FakeClientRepository(clients: previewClients))
+        return ClientsViewModel(getClientsUseCase: useCase)
     }
 }

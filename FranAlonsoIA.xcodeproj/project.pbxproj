@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E02D74682E1A0A4100B9234B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = E02D74672E1A0A4100B9234B /* FirebaseAnalyticsWithoutAdIdSupport */; };
-		E02D746A2E1A0A4100B9234B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E02D74692E1A0A4100B9234B /* FirebaseAuth */; };
-		E02D746C2E1A0A4100B9234B /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = E02D746B2E1A0A4100B9234B /* FirebaseCore */; };
-		E02D746E2E1A0A4100B9234B /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = E02D746D2E1A0A4100B9234B /* FirebaseCrashlytics */; };
-		E02D74702E1A0A4100B9234B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E02D746F2E1A0A4100B9234B /* FirebaseFirestore */; };
-		E02D74722E1A0A4100B9234B /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E02D74712E1A0A4100B9234B /* FirebaseStorage */; };
+		E08116382E7828C700D17780 /* FranAlonsoIA-DEV.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = E05C5F132E74F4BF00CE0867 /* FranAlonsoIA-DEV.xctestplan */; };
+		E08116392E7828C700D17780 /* FranAlonsoIA-DEV.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = E05C5F132E74F4BF00CE0867 /* FranAlonsoIA-DEV.xctestplan */; };
+		E08E819E2E736DF000FC8974 /* FirebaseAnalyticsCore in Frameworks */ = {isa = PBXBuildFile; productRef = E08E819D2E736DF000FC8974 /* FirebaseAnalyticsCore */; };
+		E08E81A02E736DF000FC8974 /* FirebaseAnalyticsIdentitySupport in Frameworks */ = {isa = PBXBuildFile; productRef = E08E819F2E736DF000FC8974 /* FirebaseAnalyticsIdentitySupport */; };
+		E08E81A22E736DF000FC8974 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E08E81A12E736DF000FC8974 /* FirebaseAuth */; };
+		E08E81A42E736DF000FC8974 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = E08E81A32E736DF000FC8974 /* FirebaseCore */; };
+		E08E81A62E736DF000FC8974 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = E08E81A52E736DF000FC8974 /* FirebaseCrashlytics */; };
+		E08E81A82E736DF000FC8974 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E08E81A72E736DF000FC8974 /* FirebaseFirestore */; };
+		E08E81AA2E736DF000FC8974 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E08E81A92E736DF000FC8974 /* FirebaseStorage */; };
+		E0F259182E7884200094D14C /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = E0F259172E7884200094D14C /* FirebaseCore */; };
+		E0F2591A2E7884200094D14C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E0F259192E7884200094D14C /* FirebaseFirestore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,14 +38,33 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E05C5F132E74F4BF00CE0867 /* FranAlonsoIA-DEV.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "FranAlonsoIA-DEV.xctestplan"; sourceTree = "<group>"; };
+		E05C5F142E74F54200CE0867 /* FranAlonsoIA-PROD.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "FranAlonsoIA-PROD.xctestplan"; sourceTree = "<group>"; };
 		E090AF4E2E189514008AC21A /* FranAlonsoIA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FranAlonsoIA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E090AF5C2E189515008AC21A /* FranAlonsoIATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FranAlonsoIATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E090AF662E189515008AC21A /* FranAlonsoIAUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FranAlonsoIAUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		E0F8290A2E78873D00E60F59 /* Exceptions for "FranAlonsoIA" folder in "FranAlonsoIATests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Data/Firestore/FakeClientRepository.swift,
+				Domain/Model/Client.swift,
+				Domain/Repository/ClientRepository.swift,
+				Domain/UseCase/GetClientsUseCase.swift,
+				UI/ViewModel/ClientsViewModel.swift,
+			);
+			target = E090AF5B2E189515008AC21A /* FranAlonsoIATests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E090AF502E189514008AC21A /* FranAlonsoIA */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E0F8290A2E78873D00E60F59 /* Exceptions for "FranAlonsoIA" folder in "FranAlonsoIATests" target */,
+			);
 			path = FranAlonsoIA;
 			sourceTree = "<group>";
 		};
@@ -61,12 +85,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E02D74682E1A0A4100B9234B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
-				E02D746E2E1A0A4100B9234B /* FirebaseCrashlytics in Frameworks */,
-				E02D746C2E1A0A4100B9234B /* FirebaseCore in Frameworks */,
-				E02D74702E1A0A4100B9234B /* FirebaseFirestore in Frameworks */,
-				E02D746A2E1A0A4100B9234B /* FirebaseAuth in Frameworks */,
-				E02D74722E1A0A4100B9234B /* FirebaseStorage in Frameworks */,
+				E08E81A02E736DF000FC8974 /* FirebaseAnalyticsIdentitySupport in Frameworks */,
+				E08E81A22E736DF000FC8974 /* FirebaseAuth in Frameworks */,
+				E08E81A62E736DF000FC8974 /* FirebaseCrashlytics in Frameworks */,
+				E08E81A42E736DF000FC8974 /* FirebaseCore in Frameworks */,
+				E08E81AA2E736DF000FC8974 /* FirebaseStorage in Frameworks */,
+				E08E819E2E736DF000FC8974 /* FirebaseAnalyticsCore in Frameworks */,
+				E08E81A82E736DF000FC8974 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +99,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0F259182E7884200094D14C /* FirebaseCore in Frameworks */,
+				E0F2591A2E7884200094D14C /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,9 +117,12 @@
 		E090AF452E189514008AC21A = {
 			isa = PBXGroup;
 			children = (
+				E05C5F142E74F54200CE0867 /* FranAlonsoIA-PROD.xctestplan */,
+				E05C5F132E74F4BF00CE0867 /* FranAlonsoIA-DEV.xctestplan */,
 				E090AF502E189514008AC21A /* FranAlonsoIA */,
 				E090AF5F2E189515008AC21A /* FranAlonsoIATests */,
 				E090AF692E189515008AC21A /* FranAlonsoIAUITests */,
+				E0F259162E7884200094D14C /* Frameworks */,
 				E090AF4F2E189514008AC21A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -105,6 +135,13 @@
 				E090AF662E189515008AC21A /* FranAlonsoIAUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E0F259162E7884200094D14C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,12 +164,13 @@
 			);
 			name = FranAlonsoIA;
 			packageProductDependencies = (
-				E02D74672E1A0A4100B9234B /* FirebaseAnalyticsWithoutAdIdSupport */,
-				E02D74692E1A0A4100B9234B /* FirebaseAuth */,
-				E02D746B2E1A0A4100B9234B /* FirebaseCore */,
-				E02D746D2E1A0A4100B9234B /* FirebaseCrashlytics */,
-				E02D746F2E1A0A4100B9234B /* FirebaseFirestore */,
-				E02D74712E1A0A4100B9234B /* FirebaseStorage */,
+				E08E819D2E736DF000FC8974 /* FirebaseAnalyticsCore */,
+				E08E819F2E736DF000FC8974 /* FirebaseAnalyticsIdentitySupport */,
+				E08E81A12E736DF000FC8974 /* FirebaseAuth */,
+				E08E81A32E736DF000FC8974 /* FirebaseCore */,
+				E08E81A52E736DF000FC8974 /* FirebaseCrashlytics */,
+				E08E81A72E736DF000FC8974 /* FirebaseFirestore */,
+				E08E81A92E736DF000FC8974 /* FirebaseStorage */,
 			);
 			productName = FranAlonsoIA;
 			productReference = E090AF4E2E189514008AC21A /* FranAlonsoIA.app */;
@@ -156,6 +194,8 @@
 			);
 			name = FranAlonsoIATests;
 			packageProductDependencies = (
+				E0F259172E7884200094D14C /* FirebaseCore */,
+				E0F259192E7884200094D14C /* FirebaseFirestore */,
 			);
 			productName = FranAlonsoIATests;
 			productReference = E090AF5C2E189515008AC21A /* FranAlonsoIATests.xctest */;
@@ -199,7 +239,6 @@
 					};
 					E090AF5B2E189515008AC21A = {
 						CreatedOnToolsVersion = 16.4;
-						TestTargetID = E090AF4D2E189514008AC21A;
 					};
 					E090AF652E189515008AC21A = {
 						CreatedOnToolsVersion = 16.4;
@@ -217,7 +256,7 @@
 			mainGroup = E090AF452E189514008AC21A;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				E02D74662E1A0A4100B9234B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				E08E819C2E736DF000FC8974 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E090AF4F2E189514008AC21A /* Products */;
@@ -243,6 +282,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E08116382E7828C700D17780 /* FranAlonsoIA-DEV.xctestplan in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +290,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E08116392E7828C700D17780 /* FranAlonsoIA-DEV.xctestplan in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +458,7 @@
 				CODE_SIGN_ENTITLEMENTS = FranAlonsoIA/FranAlonsoIA.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "FranAlonsoIA/Preview\\ Content";
 				DEVELOPMENT_TEAM = NWN8JUE438;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -444,6 +486,7 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEVELOP";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -459,6 +502,7 @@
 				CODE_SIGN_ENTITLEMENTS = FranAlonsoIA/FranAlonsoIA.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "FranAlonsoIA/Preview\\ Content";
 				DEVELOPMENT_TEAM = NWN8JUE438;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -486,6 +530,7 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PROD;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -496,7 +541,6 @@
 		E090AF742E189515008AC21A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NWN8JUE438;
@@ -507,11 +551,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.plusprojects.FranAlonsoIATests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FranAlonsoIA.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FranAlonsoIA";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				XROS_DEPLOYMENT_TARGET = 2.5;
 			};
 			name = Debug;
@@ -519,7 +563,6 @@
 		E090AF752E189515008AC21A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NWN8JUE438;
@@ -530,11 +573,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.plusprojects.FranAlonsoIATests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FranAlonsoIA.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FranAlonsoIA";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				XROS_DEPLOYMENT_TARGET = 2.5;
 			};
 			name = Release;
@@ -625,46 +668,61 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E02D74662E1A0A4100B9234B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		E08E819C2E736DF000FC8974 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 12.0.0;
+				minimumVersion = 12.2.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E02D74672E1A0A4100B9234B /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+		E08E819D2E736DF000FC8974 /* FirebaseAnalyticsCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E02D74662E1A0A4100B9234B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalyticsWithoutAdIdSupport;
+			package = E08E819C2E736DF000FC8974 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsCore;
 		};
-		E02D74692E1A0A4100B9234B /* FirebaseAuth */ = {
+		E08E819F2E736DF000FC8974 /* FirebaseAnalyticsIdentitySupport */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E02D74662E1A0A4100B9234B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = E08E819C2E736DF000FC8974 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsIdentitySupport;
+		};
+		E08E81A12E736DF000FC8974 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E08E819C2E736DF000FC8974 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
-		E02D746B2E1A0A4100B9234B /* FirebaseCore */ = {
+		E08E81A32E736DF000FC8974 /* FirebaseCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E02D74662E1A0A4100B9234B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = E08E819C2E736DF000FC8974 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCore;
 		};
-		E02D746D2E1A0A4100B9234B /* FirebaseCrashlytics */ = {
+		E08E81A52E736DF000FC8974 /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E02D74662E1A0A4100B9234B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = E08E819C2E736DF000FC8974 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
 		};
-		E02D746F2E1A0A4100B9234B /* FirebaseFirestore */ = {
+		E08E81A72E736DF000FC8974 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E02D74662E1A0A4100B9234B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = E08E819C2E736DF000FC8974 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
-		E02D74712E1A0A4100B9234B /* FirebaseStorage */ = {
+		E08E81A92E736DF000FC8974 /* FirebaseStorage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E02D74662E1A0A4100B9234B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = E08E819C2E736DF000FC8974 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		E0F259172E7884200094D14C /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E08E819C2E736DF000FC8974 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		E0F259192E7884200094D14C /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E08E819C2E736DF000FC8974 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
