@@ -1,0 +1,70 @@
+# FranAlonsoIA - SwiftLint Configuration
+
+# Incluir los directorios del código fuente
+included:
+  - FranAlonsoIA
+  - FranAlonsoIATests
+
+# Excluir carpetas que no tienen código fuente Swift
+excluded:
+  - Pods
+  - .git
+  - Carthage
+  - fastlane
+  - Scripts
+  - Resources
+  #   - FranAlonsoIA/Generated   # Si usas SwiftGen o código generado
+
+# Reglas desactivadas por ahora (puedes ir afinando)
+# disabled_rules:
+
+
+# Personaliza reglas concretas
+# opt_in_rules:
+
+# Reglas opcionales que puedes activar cuando empieces a afinar el estilo.
+# opt_in_rules:
+#   - explicit_init           # Prefiere usar `self.init(...)` incluso si no es estrictamente necesario.
+  - first_where             # Prefiere `first(where:)` en lugar de `filter { ... }.first` para eficiencia.
+  - toggle_bool             # Usa `toggle()` en vez de `flag = !flag`.
+  - sorted_first_last       # Prefiere `sorted().first` o `sorted().last` en vez de `.min()` o `.max()` si el orden importa.
+
+# Reglas con configuración personalizada (comentadas por ahora)
+
+# line_length:
+#   warning: 120
+#   error: 200
+#   ignores_comments: true
+#   ignores_urls: true
+
+# type_body_length:
+#   warning: 300
+#   error: 500
+
+# function_body_length:
+#   warning: 60
+#   error: 100
+#   ignores_comments: true
+#   ignores_empty_functions: true
+
+# file_length:
+#   warning: 400
+#   error: 600
+#   ignore_comment_only_lines: true
+
+# Reglas con configuración personalizada
+
+
+# Añadir reglas relacionadas con concurrencia si se detectan
+custom_rules:
+  actor_usage:
+    name: "Actor usage should be limited"
+    regex: "actor\\s+[A-Z][A-Za-z]+"
+    message: "Revisa si el uso de actores es realmente necesario. Considera `@MainActor` o `isolated`."
+    severity: warning
+
+  sync_usage:
+    name: "Evita usar DispatchQueue.sync"
+    regex: "DispatchQueue\\.sync"
+    message: "Evita `DispatchQueue.sync` en favor de async/await para evitar bloqueos."
+    severity: error
