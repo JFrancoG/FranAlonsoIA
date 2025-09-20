@@ -28,7 +28,7 @@ struct FranAlonsoIAApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }
