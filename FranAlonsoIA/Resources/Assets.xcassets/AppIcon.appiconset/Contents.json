@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "franalonso-light.png",
+      "filename" : "icon_light.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -13,7 +13,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "franalonso-dark.png",
+      "filename" : "icon_dark.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -25,7 +25,7 @@
           "value" : "tinted"
         }
       ],
-      "filename" : "franalonso-tinted.png",
+      "filename" : "icon_tinted.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
