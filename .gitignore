@@ -16,6 +16,9 @@ Package.resolved
 # Firebase
 GoogleService-Info.plist
 
+# Variantes de Firebase
+GoogleService-Info*.plist
+
 # Lottie
 *.lottiecache
 
@@ -28,6 +31,17 @@ build/
 
 # Logs
 *.log
+
+# Configuración y claves
+*.xcconfig
+*.p12
+*.mobileprovision
+*.cert
+*.key
+
+# Archivos de entorno
+*.env
+Secrets.swift
 
 # Misc
 *.DS_Store
