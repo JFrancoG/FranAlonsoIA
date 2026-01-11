@@ -5,7 +5,6 @@
 //  Created by Jesús Franco on 06.07.2025.
 //
 
-
 import Foundation
 
 struct Service: Identifiable, Codable, Equatable {

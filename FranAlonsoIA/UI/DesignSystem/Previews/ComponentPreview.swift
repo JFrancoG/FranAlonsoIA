@@ -26,7 +26,7 @@ struct ComponentPreview: View {
                         .foregroundColor(.black)
                         .cornerRadius(12)
                 }
-                
+
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Client Info Card").font(.title.bold())
                     VStack(alignment: .leading, spacing: 4) {
@@ -39,7 +39,7 @@ struct ComponentPreview: View {
                     .cornerRadius(16)
                     .shadow(radius: 4)
                 }
-                
+
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Text Field").font(.title.bold())
                     TextField("Enter client name", text: .constant(""))

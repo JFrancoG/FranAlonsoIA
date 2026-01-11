@@ -53,7 +53,6 @@ struct ColorSample: View {
     }
 }
 
-
 #Preview("Light") {
     VisualIdentityView()
         .preferredColorScheme(.light)

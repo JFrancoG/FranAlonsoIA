@@ -23,7 +23,7 @@ struct ProductDTO: Codable, Equatable {
 
 // Mapper entre ProductDTO y Product del dominio
 struct ProductMapper {
-    
+
     static func toDomain(from dto: ProductDTO) -> Product {
         return Product(
             id: dto.id,
@@ -38,7 +38,7 @@ struct ProductMapper {
             notes: dto.notes
         )
     }
-    
+
     static func toDTO(from product: Product) -> ProductDTO {
         return ProductDTO(
             id: product.id,

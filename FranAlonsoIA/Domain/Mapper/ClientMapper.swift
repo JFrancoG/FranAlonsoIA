@@ -35,7 +35,7 @@ struct BillingAddressDTO: Codable, Equatable {
 
 // Mapper entre ClientDTO y Client del dominio
 struct ClientMapper {
-    
+
     static func toDomain(from dto: ClientDTO) -> Client {
         return Client(
             id: dto.id,
@@ -60,7 +60,7 @@ struct ClientMapper {
             isActive: dto.isActive
         )
     }
-    
+
     static func toDTO(from client: Client) -> ClientDTO {
         return ClientDTO(
             id: client.id,

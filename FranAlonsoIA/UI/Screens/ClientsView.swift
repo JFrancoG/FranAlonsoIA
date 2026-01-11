@@ -34,4 +34,3 @@ struct ClientsView: View {
 #Preview {
     ClientsView(viewModel: .preview)
 }
-

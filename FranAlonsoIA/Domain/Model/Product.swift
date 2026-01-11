@@ -53,4 +53,3 @@ struct Product: Identifiable, Codable, Equatable {
         return formatter.string(from: date)
     }
 }
-

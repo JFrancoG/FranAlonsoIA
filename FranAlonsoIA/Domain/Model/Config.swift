@@ -68,13 +68,13 @@ enum CodableValue: Codable, Equatable {
         case .string(let stringVal): try container.encode(stringVal)
         }
     }
-    
+
     static func == (lhs: CodableValue, rhs: CodableValue) -> Bool {
         switch (lhs, rhs) {
-        case let (.int(a), .int(b)): return a == b
-        case let (.double(a), .double(b)): return a == b
-        case let (.bool(a), .bool(b)): return a == b
-        case let (.string(a), .string(b)): return a == b
+        case let (.int(leftValue), .int(rightValue)): return leftValue == rightValue
+        case let (.double(leftValue), .double(rightValue)): return leftValue == rightValue
+        case let (.bool(leftValue), .bool(rightValue)): return leftValue == rightValue
+        case let (.string(leftValue), .string(rightValue)): return leftValue == rightValue
         default: return false
         }
     }

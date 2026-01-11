@@ -5,7 +5,6 @@
 //  Created by Jesús Franco on 12.09.2025.
 //
 
-
 import XCTest
 @testable import FranAlonsoIA
 

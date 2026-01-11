@@ -12,7 +12,7 @@ enum FontSize: CGFloat {
     case subtitle = 24
     case body = 17
     case caption = 13
-    
+
     var size: CGFloat { rawValue }
 }
 
@@ -22,5 +22,3 @@ extension Font {
     static var interBody: Font { .custom("Inter-Regular", size: FontSize.body.size) }
     static var interCaption: Font { .custom("Inter-Regular", size: FontSize.caption.size) }
 }
-
-
