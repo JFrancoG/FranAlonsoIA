@@ -13,6 +13,17 @@ enum FirestoreClientRepositoryError: Error {
 }
 
 final class FirestoreClientRepository: ClientRepository {
+    private static let dateFormatters: [DateFormatter] = {
+        let formats = ["dd/MM/yyyy", "d/M/yyyy", "yyyy-MM-dd", "dd-MM-yyyy", "d-M-yyyy"]
+        return formats.map { format in
+            let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "es_ES")
+            formatter.timeZone = TimeZone(secondsFromGMT: 0)
+            formatter.dateFormat = format
+            return formatter
+        }
+    }()
+
     func getAllClients() async throws -> [Client] {
         let snapshot = try await getDocuments(from: FirestoreRefManager.clients)
         return try snapshot.documents.map { try client(from: $0) }
@@ -28,13 +39,13 @@ final class FirestoreClientRepository: ClientRepository {
 
     func createClient(_ client: Client) async throws {
         let dto = ClientMapper.toDTO(from: client)
-        let data = clientData(from: dto, includeId: true)
+        let data = clientData(from: dto)
         try await setData(data, for: FirestoreRefManager.clients.document(dto.id), merge: false)
     }
 
     func updateClient(_ client: Client) async throws {
         let dto = ClientMapper.toDTO(from: client)
-        let data = clientData(from: dto, includeId: true)
+        let data = clientData(from: dto)
         try await setData(data, for: FirestoreRefManager.clients.document(dto.id), merge: true)
     }
 
@@ -111,22 +122,23 @@ private extension FirestoreClientRepository {
 
         let phones = data["phones"] as? [String] ?? []
         let billingAddress = billingAddressDTO(from: data["billingAddress"])
+            ?? addressDTO(from: data["address"])
 
         let dto = ClientDTO(
-            id: (data["id"] as? String) ?? document.documentID,
+            id: document.documentID,
             fullName: fullName,
             phones: phones,
             email: data["email"] as? String,
-            gender: data["gender"] as? String,
+            gender: nil,
             billingAddress: billingAddress,
             birthDate: dateValue(from: data["birthDate"]),
-            colorRecipe: data["colorRecipe"] as? String,
-            lastColorDate: dateValue(from: data["lastColorDate"]),
-            profilePhotoUrl: data["profilePhotoUrl"] as? String,
-            consentFormUrl: data["consentFormUrl"] as? String,
+            colorRecipe: data["recipe"] as? String,
+            lastColorDate: dateValue(from: data["colorDate"]),
+            profilePhotoUrl: data["photoUrl"] as? String,
+            consentFormUrl: data["consentUrl"] as? String,
             notes: data["notes"] as? String,
             isActive: data["isActive"] as? Bool ?? true,
-            lastUpdated: dateValue(from: data["lastUpdated"])
+            lastUpdated: nil
         )
 
         return ClientMapper.toDomain(from: dto)
@@ -152,38 +164,67 @@ private extension FirestoreClientRepository {
         )
     }
 
+    func addressDTO(from value: Any?) -> BillingAddressDTO? {
+        guard let address = value as? String else {
+            return nil
+        }
+        let trimmed = address.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else {
+            return nil
+        }
+        return BillingAddressDTO(
+            street: trimmed,
+            postalCode: "",
+            city: "",
+            province: ""
+        )
+    }
+
     func dateValue(from value: Any?) -> Date? {
         if let timestamp = value as? Timestamp {
             return timestamp.dateValue()
         }
-        return value as? Date
+        if let date = value as? Date {
+            return date
+        }
+        if let string = value as? String {
+            let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !trimmed.isEmpty else {
+                return nil
+            }
+            for formatter in FirestoreClientRepository.dateFormatters {
+                if let date = formatter.date(from: trimmed) {
+                    return date
+                }
+            }
+        }
+        return nil
     }
 
-    func clientData(from dto: ClientDTO, includeId: Bool) -> [String: Any] {
+    func clientData(from dto: ClientDTO) -> [String: Any] {
         var data: [String: Any] = [
             "fullName": dto.fullName,
             "phones": dto.phones,
             "isActive": dto.isActive
         ]
 
-        if includeId {
-            data["id"] = dto.id
-        }
-
         data["email"] = dto.email
-        data["gender"] = dto.gender
-        data["colorRecipe"] = dto.colorRecipe
-        data["profilePhotoUrl"] = dto.profilePhotoUrl
-        data["consentFormUrl"] = dto.consentFormUrl
+        data["recipe"] = dto.colorRecipe
+        data["photoUrl"] = dto.profilePhotoUrl
+        data["consentUrl"] = dto.consentFormUrl
         data["notes"] = dto.notes
 
         if let billingAddress = dto.billingAddress {
-            data["billingAddress"] = [
-                "street": billingAddress.street,
-                "postalCode": billingAddress.postalCode,
-                "city": billingAddress.city,
-                "province": billingAddress.province
-            ]
+            let components = [
+                billingAddress.street,
+                billingAddress.postalCode,
+                billingAddress.city,
+                billingAddress.province
+            ].map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            let address = components.filter { !$0.isEmpty }.joined(separator: ", ")
+            if !address.isEmpty {
+                data["address"] = address
+            }
         }
 
         if let birthDate = dto.birthDate {
@@ -191,10 +232,8 @@ private extension FirestoreClientRepository {
         }
 
         if let lastColorDate = dto.lastColorDate {
-            data["lastColorDate"] = Timestamp(date: lastColorDate)
+            data["colorDate"] = Timestamp(date: lastColorDate)
         }
-
-        data["lastUpdated"] = Timestamp(date: dto.lastUpdated ?? Date())
 
         return data
     }
