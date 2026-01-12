@@ -55,9 +55,9 @@ A modern, fluid and robust app that enables complete management of a salon like 
 
 - **iPad-first UI design**, with Split View, multitouch, and smooth navigation
 - **Swift 6** with strict concurrency (`@MainActor`, `async/await`, value types)
-- **SwiftUI (iOS 18+)**, adaptive UI
+- **SwiftUI (iOS 26+)**, adaptive UI
 - **Clean Architecture**: clear separation of `UI / Domain / Data`
-- **Local persistence**: SwiftData or CoreData (depending on stability)
+- **Local persistence**: SwiftData
 - **Cloud sync**: Firestore (Firebase) via decoupled repositories
 - **Minimal and intuitive UI**, inspired by Craft, Notion and Things
 - **Dark mode and accessibility** from day one
@@ -152,9 +152,9 @@ Una app moderna, fluida y robusta que permite gestionar de forma integral el dí
 
 - **Diseño first-iPad**, con soporte completo para multitouch, Split View y navegación fluida.
 - **Swift 6**, concurrencia estricta (`@MainActor`, `async/await`, tipos seguros).
-- **SwiftUI (iOS 18+)**, UI moderna y adaptativa.
+- **SwiftUI (iOS 26+)**, UI moderna y adaptativa.
 - **Clean Architecture** (separación clara de UI / Domain / Data).
-- **Persistencia local**: SwiftData o CoreData (según estabilidad).
+- **Persistencia local**: SwiftData.
 - **Sincronización Cloud**: Firebase Firestore desacoplado por repositorios.
 - **Diseño minimalista e intuitivo**, inspirado en Craft, Notion y Things.
 - **Modo oscuro y accesibilidad** incluidos desde el inicio.
