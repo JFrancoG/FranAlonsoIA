@@ -7,11 +7,6 @@
 
 import FirebaseFirestore
 
-enum FirestoreClientRepositoryError: Error {
-    case missingData(documentId: String)
-    case invalidData(documentId: String, field: String)
-}
-
 final class FirestoreClientRepository: ClientRepository {
     func getAllClients() async throws -> [Client] {
         let snapshot = try await getDocuments(from: FirestoreRefManager.clients)
@@ -75,7 +70,7 @@ private extension FirestoreClientRepository {
     }
 
     func setData(_ data: [String: Any], for document: DocumentReference, merge: Bool) async throws {
-        try await withCheckedThrowingContinuation { continuation in
+        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
             document.setData(data, merge: merge) { error in
                 if let error {
                     continuation.resume(throwing: error)
@@ -87,7 +82,7 @@ private extension FirestoreClientRepository {
     }
 
     func deleteDocument(for document: DocumentReference) async throws {
-        try await withCheckedThrowingContinuation { continuation in
+        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
             document.delete { error in
                 if let error {
                     continuation.resume(throwing: error)

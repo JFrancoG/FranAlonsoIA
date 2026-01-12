@@ -19,13 +19,12 @@ extension Client {
             fullName: name,
             phones: phones,
             email: nil,
-            gender: nil,
             billingAddress: nil,
             birthDate: nil,
-            colorRecipe: nil,
+            recipe: nil,
             lastColorDate: nil,
-            profilePhotoUrl: nil,
-            consentFormUrl: nil,
+            photoUrl: nil,
+            consentUrl: nil,
             notes: nil,
             isActive: isActive
         )

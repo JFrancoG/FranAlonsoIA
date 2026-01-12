@@ -22,5 +22,11 @@ FranAlonsoIA follows a Clean Architecture approach with clear separation between
 4. The Data layer implements those protocols and talks to local/remote sources.
 5. Mappers translate between DTOs and Domain models.
 
+## Firestore Conventions
+- Document IDs are the source of truth for entity identifiers.
+- Field names are snake_case (for example, `full_name`, `last_color_date`).
+- Dates are stored as strings in `dd/MM/yyyy` (nullable).
+- `billing_address` is optional and stored as `null` when absent.
+
 ## Future-Ready Design
 The modular structure keeps UI changes isolated and allows future AI features (suggestions, OCR, analytics) to plug into the Domain/Data layers without rewriting UI flows.
