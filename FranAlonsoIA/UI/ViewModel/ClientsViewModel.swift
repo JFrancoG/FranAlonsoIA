@@ -6,12 +6,14 @@
 //
 
 import Foundation
+import Observation
 
 @MainActor
-final class ClientsViewModel: ObservableObject {
-    @Published var clients: [Client] = []
+@Observable
+final class ClientsViewModel {
+    var clients: [Client] = []
 
-    private let getClientsUseCase: GetClientsUseCase
+    @ObservationIgnored private let getClientsUseCase: GetClientsUseCase
 
     init(getClientsUseCase: GetClientsUseCase) {
         self.getClientsUseCase = getClientsUseCase

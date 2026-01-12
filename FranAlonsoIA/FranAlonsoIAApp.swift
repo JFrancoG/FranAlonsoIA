@@ -16,6 +16,8 @@ extension ProcessInfo {
 
 @main
 struct FranAlonsoIAApp: App {
+    @State private var dependencies = AppDependencies()
+
     init() {
         print("🧪 Running with environment:", ProcessInfo.processInfo.environment)
         if !ProcessInfo.processInfo.isSwiftUIPreview &&
@@ -29,6 +31,7 @@ struct FranAlonsoIAApp: App {
     var body: some Scene {
         WindowGroup {
             HomeView()
+                .environment(dependencies)
         }
     }
 }
