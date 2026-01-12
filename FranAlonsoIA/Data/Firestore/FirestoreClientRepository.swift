@@ -13,15 +13,12 @@ enum FirestoreClientRepositoryError: Error {
 }
 
 final class FirestoreClientRepository: ClientRepository {
-    private static let dateFormatters: [DateFormatter] = {
-        let formats = ["dd/MM/yyyy", "d/M/yyyy", "yyyy-MM-dd", "dd-MM-yyyy", "d-M-yyyy"]
-        return formats.map { format in
-            let formatter = DateFormatter()
-            formatter.locale = Locale(identifier: "es_ES")
-            formatter.timeZone = TimeZone(secondsFromGMT: 0)
-            formatter.dateFormat = format
-            return formatter
-        }
+    private static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "es_ES")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "dd/MM/yyyy"
+        return formatter
     }()
 
     func getAllClients() async throws -> [Client] {
@@ -116,29 +113,26 @@ private extension FirestoreClientRepository {
             throw FirestoreClientRepositoryError.missingData(documentId: document.documentID)
         }
 
-        guard let fullName = data["fullName"] as? String else {
-            throw FirestoreClientRepositoryError.invalidData(documentId: document.documentID, field: "fullName")
+        guard let fullName = data["full_name"] as? String else {
+            throw FirestoreClientRepositoryError.invalidData(documentId: document.documentID, field: "full_name")
         }
 
         let phones = data["phones"] as? [String] ?? []
-        let billingAddress = billingAddressDTO(from: data["billingAddress"])
-            ?? addressDTO(from: data["address"])
+        let billingAddress = billingAddressDTO(from: data["billing_address"])
 
         let dto = ClientDTO(
             id: document.documentID,
             fullName: fullName,
             phones: phones,
-            email: data["email"] as? String,
-            gender: nil,
+            email: stringValue(from: data["email"]),
             billingAddress: billingAddress,
-            birthDate: dateValue(from: data["birthDate"]),
-            colorRecipe: data["recipe"] as? String,
-            lastColorDate: dateValue(from: data["colorDate"]),
-            profilePhotoUrl: data["photoUrl"] as? String,
-            consentFormUrl: data["consentUrl"] as? String,
-            notes: data["notes"] as? String,
-            isActive: data["isActive"] as? Bool ?? true,
-            lastUpdated: nil
+            birthDate: stringValue(from: data["birth_date"]),
+            recipe: stringValue(from: data["recipe"]),
+            lastColorDate: stringValue(from: data["last_color_date"]),
+            photoUrl: stringValue(from: data["photo_url"]),
+            consentUrl: stringValue(from: data["consent_url"]),
+            notes: stringValue(from: data["notes"]),
+            isActive: data["is_active"] as? Bool ?? true
         )
 
         return ClientMapper.toDomain(from: dto)
@@ -150,7 +144,7 @@ private extension FirestoreClientRepository {
         }
         guard
             let street = data["street"] as? String,
-            let postalCode = data["postalCode"] as? String,
+            let postalCode = data["postal_code"] as? String,
             let city = data["city"] as? String,
             let province = data["province"] as? String
         else {
@@ -164,76 +158,43 @@ private extension FirestoreClientRepository {
         )
     }
 
-    func addressDTO(from value: Any?) -> BillingAddressDTO? {
-        guard let address = value as? String else {
-            return nil
-        }
-        let trimmed = address.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else {
-            return nil
-        }
-        return BillingAddressDTO(
-            street: trimmed,
-            postalCode: "",
-            city: "",
-            province: ""
-        )
-    }
-
-    func dateValue(from value: Any?) -> Date? {
+    func stringValue(from value: Any?) -> String? {
         if let timestamp = value as? Timestamp {
-            return timestamp.dateValue()
-        }
-        if let date = value as? Date {
-            return date
+            return FirestoreClientRepository.dateFormatter.string(from: timestamp.dateValue())
         }
         if let string = value as? String {
             let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines)
             guard !trimmed.isEmpty else {
                 return nil
             }
-            for formatter in FirestoreClientRepository.dateFormatters {
-                if let date = formatter.date(from: trimmed) {
-                    return date
-                }
-            }
+            return trimmed
         }
         return nil
     }
 
     func clientData(from dto: ClientDTO) -> [String: Any] {
         var data: [String: Any] = [
-            "fullName": dto.fullName,
+            "full_name": dto.fullName,
             "phones": dto.phones,
-            "isActive": dto.isActive
+            "is_active": dto.isActive
         ]
 
-        data["email"] = dto.email
-        data["recipe"] = dto.colorRecipe
-        data["photoUrl"] = dto.profilePhotoUrl
-        data["consentUrl"] = dto.consentFormUrl
-        data["notes"] = dto.notes
+        data["email"] = dto.email ?? ""
+        data["recipe"] = dto.recipe ?? ""
+        data["photo_url"] = dto.photoUrl ?? ""
+        data["consent_url"] = dto.consentUrl ?? ""
+        data["notes"] = dto.notes ?? ""
 
-        if let billingAddress = dto.billingAddress {
-            let components = [
-                billingAddress.street,
-                billingAddress.postalCode,
-                billingAddress.city,
-                billingAddress.province
-            ].map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
-            let address = components.filter { !$0.isEmpty }.joined(separator: ", ")
-            if !address.isEmpty {
-                data["address"] = address
-            }
-        }
+        let billingAddress = dto.billingAddress
+        data["billing_address"] = [
+            "street": billingAddress?.street ?? "",
+            "postal_code": billingAddress?.postalCode ?? "",
+            "city": billingAddress?.city ?? "",
+            "province": billingAddress?.province ?? ""
+        ]
 
-        if let birthDate = dto.birthDate {
-            data["birthDate"] = Timestamp(date: birthDate)
-        }
-
-        if let lastColorDate = dto.lastColorDate {
-            data["colorDate"] = Timestamp(date: lastColorDate)
-        }
+        data["birth_date"] = dto.birthDate ?? ""
+        data["last_color_date"] = dto.lastColorDate ?? ""
 
         return data
     }

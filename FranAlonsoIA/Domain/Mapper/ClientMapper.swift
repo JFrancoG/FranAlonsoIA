@@ -13,16 +13,14 @@ struct ClientDTO: Codable, Equatable {
     let fullName: String
     let phones: [String]
     let email: String?
-    let gender: String?
     let billingAddress: BillingAddressDTO?
-    let birthDate: Date?
-    let colorRecipe: String?
-    let lastColorDate: Date?
-    let profilePhotoUrl: String?
-    let consentFormUrl: String?
+    let birthDate: String?
+    let recipe: String?
+    let lastColorDate: String?
+    let photoUrl: String?
+    let consentUrl: String?
     let notes: String?
     let isActive: Bool
-    let lastUpdated: Date?
 }
 
 // Submodelo auxiliar
@@ -42,7 +40,6 @@ struct ClientMapper {
             fullName: dto.fullName,
             phones: dto.phones,
             email: dto.email,
-            gender: dto.gender,
             billingAddress: dto.billingAddress.map {
                 BillingAddress(
                     street: $0.street,
@@ -52,10 +49,10 @@ struct ClientMapper {
                 )
             },
             birthDate: dto.birthDate,
-            colorRecipe: dto.colorRecipe,
+            recipe: dto.recipe,
             lastColorDate: dto.lastColorDate,
-            profilePhotoUrl: dto.profilePhotoUrl,
-            consentFormUrl: dto.consentFormUrl,
+            photoUrl: dto.photoUrl,
+            consentUrl: dto.consentUrl,
             notes: dto.notes,
             isActive: dto.isActive
         )
@@ -67,7 +64,6 @@ struct ClientMapper {
             fullName: client.fullName,
             phones: client.phones,
             email: client.email,
-            gender: client.gender,
             billingAddress: client.billingAddress.map {
                 BillingAddressDTO(
                     street: $0.street,
@@ -77,13 +73,12 @@ struct ClientMapper {
                 )
             },
             birthDate: client.birthDate,
-            colorRecipe: client.colorRecipe,
+            recipe: client.recipe,
             lastColorDate: client.lastColorDate,
-            profilePhotoUrl: client.profilePhotoUrl,
-            consentFormUrl: client.consentFormUrl,
+            photoUrl: client.photoUrl,
+            consentUrl: client.consentUrl,
             notes: client.notes,
-            isActive: client.isActive,
-            lastUpdated: nil
+            isActive: client.isActive
         )
     }
 }

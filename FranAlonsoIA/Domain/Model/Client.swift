@@ -12,15 +12,14 @@ struct Client: Identifiable, Codable, Equatable {
     var fullName: String
     var phones: [String]
     var email: String?
-    var gender: String?
 
     var billingAddress: BillingAddress?
-    var birthDate: Date?
-    var colorRecipe: String?
-    var lastColorDate: Date?
+    var birthDate: String?
+    var recipe: String?
+    var lastColorDate: String?
 
-    var profilePhotoUrl: String?
-    var consentFormUrl: String?
+    var photoUrl: String?
+    var consentUrl: String?
 
     var notes: String?
     var isActive: Bool
