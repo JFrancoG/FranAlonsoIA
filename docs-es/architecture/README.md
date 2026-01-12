@@ -22,5 +22,11 @@ FranAlonsoIA sigue un enfoque de Clean Architecture con una separación clara en
 4. La capa Data implementa esos protocolos y habla con fuentes locales/remotas.
 5. Los mappers traducen entre DTOs y modelos de Domain.
 
+## Convenciones de Firestore
+- Los document IDs son la fuente de verdad para los identificadores.
+- Los nombres de campos van en snake_case (por ejemplo, `full_name`, `last_color_date`).
+- Las fechas se guardan como string en formato `dd/MM/yyyy` (nullable).
+- `billing_address` es opcional y se guarda como `null` cuando no hay datos.
+
 ## Diseño preparado para el futuro
 La estructura modular mantiene los cambios de UI aislados y permite integrar futuras funciones de IA (sugerencias, OCR, analítica) en las capas Domain/Data sin reescribir los flujos de UI.

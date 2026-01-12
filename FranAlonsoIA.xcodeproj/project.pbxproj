@@ -56,7 +56,10 @@
 		E0F8290A2E78873D00E60F59 /* Exceptions for "FranAlonsoIA" folder in "FranAlonsoIATests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Data/Firestore/FirestoreClientCodec.swift,
+				Data/Firestore/FirestoreClientRepositoryError.swift,
 				Data/Firestore/FakeClientRepository.swift,
+				Domain/Mapper/ClientMapper.swift,
 				Domain/Model/Client.swift,
 				Domain/Repository/ClientRepository.swift,
 				Domain/UseCase/GetClientsUseCase.swift,
