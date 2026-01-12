@@ -13,12 +13,23 @@ enum FirestoreClientRepositoryError: Error {
 }
 
 final class FirestoreClientRepository: ClientRepository {
-    private static let dateFormatter: DateFormatter = {
+    private static let outputDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "es_ES")
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        formatter.dateFormat = "dd/MM/yyyy"
+        formatter.dateFormat = "d/M/yyyy"
         return formatter
+    }()
+
+    private static let inputDateFormatters: [DateFormatter] = {
+        let formats = ["d/M/yyyy", "dd/MM/yyyy", "yyyy-MM-dd", "yyyy/MM/dd"]
+        return formats.map { format in
+            let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "es_ES")
+            formatter.timeZone = TimeZone(secondsFromGMT: 0)
+            formatter.dateFormat = format
+            return formatter
+        }
     }()
 
     func getAllClients() async throws -> [Client] {
@@ -126,9 +137,9 @@ private extension FirestoreClientRepository {
             phones: phones,
             email: stringValue(from: data["email"]),
             billingAddress: billingAddress,
-            birthDate: stringValue(from: data["birth_date"]),
+            birthDate: dateValue(from: data["birth_date"]),
             recipe: stringValue(from: data["recipe"]),
-            lastColorDate: stringValue(from: data["last_color_date"]),
+            lastColorDate: dateValue(from: data["last_color_date"]),
             photoUrl: stringValue(from: data["photo_url"]),
             consentUrl: stringValue(from: data["consent_url"]),
             notes: stringValue(from: data["notes"]),
@@ -160,7 +171,7 @@ private extension FirestoreClientRepository {
 
     func stringValue(from value: Any?) -> String? {
         if let timestamp = value as? Timestamp {
-            return FirestoreClientRepository.dateFormatter.string(from: timestamp.dateValue())
+            return FirestoreClientRepository.outputDateFormatter.string(from: timestamp.dateValue())
         }
         if let string = value as? String {
             let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -168,6 +179,28 @@ private extension FirestoreClientRepository {
                 return nil
             }
             return trimmed
+        }
+        return nil
+    }
+
+    func dateValue(from value: Any?) -> Date? {
+        if let timestamp = value as? Timestamp {
+            return timestamp.dateValue()
+        }
+        if let date = value as? Date {
+            return date
+        }
+        guard let string = value as? String else {
+            return nil
+        }
+        let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else {
+            return nil
+        }
+        for formatter in FirestoreClientRepository.inputDateFormatters {
+            if let date = formatter.date(from: trimmed) {
+                return date
+            }
         }
         return nil
     }
@@ -185,17 +218,27 @@ private extension FirestoreClientRepository {
         data["consent_url"] = dto.consentUrl ?? ""
         data["notes"] = dto.notes ?? ""
 
-        let billingAddress = dto.billingAddress
-        data["billing_address"] = [
-            "street": billingAddress?.street ?? "",
-            "postal_code": billingAddress?.postalCode ?? "",
-            "city": billingAddress?.city ?? "",
-            "province": billingAddress?.province ?? ""
-        ]
+        if let billingAddress = dto.billingAddress {
+            data["billing_address"] = [
+                "street": billingAddress.street,
+                "postal_code": billingAddress.postalCode,
+                "city": billingAddress.city,
+                "province": billingAddress.province
+            ]
+        } else {
+            data["billing_address"] = NSNull()
+        }
 
-        data["birth_date"] = dto.birthDate ?? ""
-        data["last_color_date"] = dto.lastColorDate ?? ""
+        data["birth_date"] = dateString(from: dto.birthDate)
+        data["last_color_date"] = dateString(from: dto.lastColorDate)
 
         return data
+    }
+
+    func dateString(from date: Date?) -> String {
+        guard let date else {
+            return ""
+        }
+        return FirestoreClientRepository.outputDateFormatter.string(from: date)
     }
 }

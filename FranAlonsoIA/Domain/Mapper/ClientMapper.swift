@@ -14,9 +14,9 @@ struct ClientDTO: Codable, Equatable {
     let phones: [String]
     let email: String?
     let billingAddress: BillingAddressDTO?
-    let birthDate: String?
+    let birthDate: Date?
     let recipe: String?
-    let lastColorDate: String?
+    let lastColorDate: Date?
     let photoUrl: String?
     let consentUrl: String?
     let notes: String?

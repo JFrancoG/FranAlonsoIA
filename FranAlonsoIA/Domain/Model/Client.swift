@@ -14,9 +14,9 @@ struct Client: Identifiable, Codable, Equatable {
     var email: String?
 
     var billingAddress: BillingAddress?
-    var birthDate: String?
+    var birthDate: Date?
     var recipe: String?
-    var lastColorDate: String?
+    var lastColorDate: Date?
 
     var photoUrl: String?
     var consentUrl: String?
